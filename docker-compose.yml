@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  authentication-service:
+    build:
+      context: ./authentication_service
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./authentication_service:/app
+  
+  authorization-service:
+    build:
+      context: ./authorization_service
+    ports:
+      - "8444:8444"
+    volumes:
+      - ./authorization_service:/app
+  
+  rocket-service:
+    build:
+      context: ./rocket_service
+    ports:
+      - "8445:8445"
+    volumes:
+      - ./rocket_service:/app
+
+  ground-station-service:
+    build:
+      context: ./ground_station_service
+    ports:
+      - "8446:8446"
+    volumes:
+      - ./ground_station_service:/app
+  
+  telemetry-service:
+    build:
+      context: ./telemetry_service
+    ports:
+      - "9443:9443"
+    volumes:
+      - ./telemetry_service:/app
+
